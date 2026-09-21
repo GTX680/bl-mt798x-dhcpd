@@ -401,7 +401,9 @@ static int do_httpd(struct cmd_tbl *cmdtp, int flag, int argc,
 
 	if (auto_action_pending) {
 		if (fw_type == FW_TYPE_INITRD)
-			boot_from_mem((ulong)upload_data);
+			boot_image_from_mem((ulong)upload_data,
+						     upload_size,
+						     (ulong)upload_data);
 		else
 			do_reset(NULL, 0, 0, NULL);
 	} else if (reboot_pending) {
